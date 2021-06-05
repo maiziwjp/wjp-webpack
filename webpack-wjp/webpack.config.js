@@ -4,6 +4,8 @@ const { merge } = require('webpack-merge');
 const devConfig = require('./config/webpack.dev.config.js'); // 开发环境下的配置文件
 const prodConfig = require('./config/webpack.prod.config.js'); // 生产环境下的配置文件
 const config = require('./wjp.config');
+const SpeedMeasureWebpack5Plugin = require('speed-measure-webpack-plugin');
+const smw = new SpeedMeasureWebpack5Plugin();
 
 // 外部配置设置通用配置
 let commonConfig = {};
@@ -19,7 +21,8 @@ if (config.alias) {
     };
 }
 
-module.exports = (env, argv) => {
+module.exports = smw.wrap((env, argv) => {
+    console.log('env', env, argv);
     if (argv.mode === 'development') {
         portFinder.getPort({ port: 8000, stopPort: 9999 }, function (err, port) {
             if (!err) {
@@ -30,4 +33,4 @@ module.exports = (env, argv) => {
     } else {
         return merge(prodConfig, commonConfig);
     }
-};
+});

@@ -1,0 +1,51 @@
+1、speed-measure-webpack-plugin：
+   1）计算整个打包总耗时
+   2）分析每个插件和 loader 的耗时情况 知道了具体loader和plugin的耗时情况
+
+2、安装：yarn add -D speed-measure-webpack-plugin
+
+3、用法：
+   const SpeedMeasureWebpack5Plugin = require('speed-measure-webpack5-plugin');
+   const smw = new SpeedMeasureWebpack5Plugin();
+   
+   module.exports = smw.wrap((env, argv) => {
+    if (argv.mode === 'development') {
+        portFinder.getPort({ port: 8000, stopPort: 9999 }, function (err, port) {
+            if (!err) {
+                devConfig.devServer.port = port;
+            }
+        });
+        return merge(devConfig, commonConfig);
+    } else {
+        return merge(prodConfig, commonConfig);
+    }
+   });
+
+4、分析图：
+   
+   1、speed-measure-webpack-plugin：
+   1）计算整个打包总耗时
+   2）分析每个插件和 loader 的耗时情况 知道了具体loader和plugin的耗时情况
+
+2、安装：yarn add -D speed-measure-webpack-plugin
+
+3、用法：
+   const SpeedMeasureWebpack5Plugin = require('speed-measure-webpack5-plugin');
+   const smw = new SpeedMeasureWebpack5Plugin();
+   
+   module.exports = smw.wrap((env, argv) => {
+    if (argv.mode === 'development') {
+        portFinder.getPort({ port: 8000, stopPort: 9999 }, function (err, port) {
+            if (!err) {
+                devConfig.devServer.port = port;
+            }
+        });
+        return merge(devConfig, commonConfig);
+    } else {
+        return merge(prodConfig, commonConfig);
+    }
+   });
+
+4、分析图：
+   
+   
