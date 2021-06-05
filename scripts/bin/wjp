@@ -1,0 +1,73 @@
+#!/usr/bin/env node
+
+const program = require('commander');
+const { spawn } = require('child_process');
+const portFinder = require('portfinder');
+
+program
+  .command('start')
+  .action(() => {
+    // cross-env ENV=dev webpack serve --mode=development
+    spawn(
+      'cross-env',
+      [
+        'ENV=dev',
+        'webpack',
+        'serve',
+        '--mode=development'
+      ],
+      {
+        stdio: 'inherit'
+      }
+    );
+  });
+
+program
+  .command('build')
+  .action(() => {
+    // cross-env ENV=prod webpack --mode=production
+    spawn(
+      'cross-env',
+      [
+        'ENV=prod',
+        'webpack',
+        '--mode=production'
+      ],
+      {
+        stdio: 'inherit'
+      }
+    );
+  });
+
+program
+  .command('watch')
+  .action(() => {
+    // http-server & cross-env ENV=watch webpack --mode=production
+    portFinder.getPort({ port: 8000, stopPort: 9999 }, function (err, port) {
+      if (!err) {
+        spawn(
+          'http-server',
+          [
+            '-p',
+            port,
+          ],
+          {
+            stdio: 'inherit'
+          }
+        );
+        spawn(
+          'cross-env',
+          [
+            'ENV=watch',
+            'webpack',
+            '--mode=production'
+          ],
+          {
+            stdio: 'inherit'
+          }
+        );
+      }
+    });
+  });
+
+program.parse();

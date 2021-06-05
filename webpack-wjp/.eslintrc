@@ -1,0 +1,74 @@
+{
+    "extends": "eslint-config-ali/react",
+    "parser": "babel-eslint",
+    "env": {
+      "browser": true,
+      "commonjs": true,
+      "es6": true,
+      "node": true
+    },
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "ecmaVersion": 2018,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "react"
+    ],
+    "rules": {
+      "import/prefer-default-export": "off",
+      "indent": [
+        "error",
+        2
+      ],
+      "linebreak-style": [
+        "error",
+        "unix"
+      ],
+      "quotes": [
+        "error",
+        "single"
+      ],
+      "react/prop-types": [
+        1,
+        {
+          "ignore": [
+            "children",
+            "className",
+            "location",
+            "history",
+            "match",
+            "staticContext"
+          ]
+        }
+      ],
+      "complexity": 0,
+      "no-console": 0,
+      "comma-dangle": 0,
+      "object-curly-spacing": ["error", "always"],
+      "no-void": "warn",
+      "new-cap": ["warn", {
+        "newIsCap": true,
+        "properties": false
+      }],
+      "no-plusplus": "warn",
+      "react/no-string-refs": "warn",
+      "react/jsx-no-target-blank": "warn",
+      "react/no-did-mount-set-state": "warn",
+      "react/no-unused-prop-types": ["warn", {
+        "customValidators": [],
+        "skipShapeProps": true
+      }],
+      "react/forbid-prop-types": ["warn", {
+        "forbid": ["any"]
+      }],
+      "react/jsx-filename-extension": ["error", {
+        "extensions": [".jsx", ".js"]
+      }],
+      "no-nested-ternary": "warn",
+      "react/no-multi-comp": 0,
+      "react-hooks/exhaustive-deps": 0,
+    }
+  }
